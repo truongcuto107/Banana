@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Giáng Sinh - Editor Banana🍌</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff6347, #ffffff);
+            background-size: 400% 400%;
+            animation: backgroundColorShift 6s infinite alternate;
+            position: relative;
+        }
+
+        /* Tiêu đề */
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 124, 252, 0.5), 0 0 30px rgba(255, 124, 252, 0.3);
+            margin-bottom: 40px;
+        }
+
+        /* Cây thông Noel */
+   .tree-emoji {
+    font-size: 20rem;
+    text-align: center;
+    animation: bounce 1s infinite alternate;
+    position: relative;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6), 0 0 100px rgba(255, 255, 255, 0.4);
+}
+
+        /* Hộp quà */
+        .gifts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: absolute;
+            bottom: -20px;
+            width: 100%;
+        }
+
+        .gift {
+            font-size: 3rem;
+        }
+
+        /* Hiệu ứng nhảy cho cây thông */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 20px 40px;
+            background: linear-gradient(45deg, #f08080, #ffa07a);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 15px rgba(255, 124, 252, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 25px rgba(255, 124, 252, 0.5);
+        }
+
+        button:active {
+            transform: scale(1.05);
+        }
+
+        #messageBox {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #2c2c2c;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 124, 252, 0.6);
+            color: white;
+            text-align: center;
+            width: 70%;
+            max-width: 400px;
+        }
+
+        #messageBox h2 {
+            font-size: 2rem;
+            color: #ffa07a;
+            margin-bottom: 10px;
+        }
+
+        #messageBox p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        #messageBox button {
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: #f08080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #messageBox button:hover {
+            background: #ff6347;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            button {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            #messageBox {
+                width: 80%;
+                padding: 25px;
+            }
+        }
+/* Hộp thông báo */
+#messageCongrats {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2c2c2c;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 124, 252, 0.6);
+    color: white;
+    text-align: center;
+    width: 70%;
+    max-width: 400px;
+}
+
+#messageCongrats h2 {
+    font-size: 2rem;
+    color: #ffa07a;
+    margin-bottom: 10px;
+}
+
+#messageCongrats p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#messageCongrats button {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 25px;
+    background: #f08080;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+#messageCongrats button:hover {
+    background: #ff6347;
+}
+   #icon {
+            font-size: 4rem;
+            color: white;
+            animation: bounceIcon 1s infinite alternate;
+            margin-top: 20px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+@keyframes bounceIcon {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Tuyết rơi */
+        .snow {
+            position: absolute;
+            top: -10px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) translateX(0);
+            }
+            100% {
+                transform: translateY(100vh) translateX(10px);
+            }
+        }
+
+        .snow-1 {
+            width: 6px;
+            height: 6px;
+            animation-duration: 10s;
+        }
+
+        .snow-2 {
+            width: 8px;
+            height: 8px;
+            animation-duration: 12s;
+        }
+
+        .snow-3 {
+            width: 10px;
+            height: 10px;
+            animation-duration: 15s;
+        }
+
+        .snow-4 {
+            width: 12px;
+            height: 12px;
+            animation-duration: 18s;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>MERRY CHRISTMAS!<br>🎅🦌🎄🦌🎅</h1>
+
+        <div class="tree-emoji">
+            🎄
+            <div class="gifts"> 
+                <div class="gift">⛄</div>
+                <div class="gift">🎁</div>
+                <div class="gift">🎁</div>
+                <div class="gift">⛄</div>
+            </div>
+         </div>
+
+   <div class="buttons">
+    <button id="accept" onclick="showCongrats()">Giáng sinh an lành! 💖</button>
+    <button id="gift" onclick="showGift()">Nhận quà nè 🎁</button>
+</div>
+
+  <div id="messageCongrats">
+       <div id="icon">⛄</div>
+        <h2>Cảm ơn bạn! 🎉</h2>
+        <p>Cảm ơn bạn đã gửi lời chúc đến Banana🍌, chúc bạn Giáng sinh an lành! 🎁🎄</p>
+        <video id="videoCongrats" width="300" controls loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/zcv3onj27trxus2kzlf9q/lv_0_20241217200410.mp4?rlkey=ncdplhqbcdfu5w7oh2uf4gv8h&st=czq7xukl&dl=0" type="video/mp4">
+    Trình duyệt của bạn không hỗ trợ video.
+</video>
+        <button onclick="closeCongrats()">Đóng</button>
+    </div>
+
+    <div id="messageBox">
+        <h2>Quà Giáng Sinh 🎉</h2>
+        <div id="icon"> 🎁 </div>
+        <p>Đây là món quà cho bạn! 🥰</p>
+        <video width="300" controls loop>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/2t1jsdv6pw1f5sdyxgiu5/lv_0_20241217173536.mp4?rlkey=0w21m45y9kj1idiec7mnxiroa&st=wwncfizi" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+        <button onclick="closeMessage()">Đóng</button>
+    </div>
+
+    <script>
+const messageCongrats = document.getElementById('messageCongrats');
+function showCongrats() {
+    messageCongrats.style.display = 'block';
+    const video = document.getElementById('videoCongrats');
+    video.play();  // Phát video
+    video.muted = false;  // Bỏ tắt tiếng để có âm thanh
+}
+
+// Đóng hộp thông báo Giáng sinh an lành
+function closeCongrats() {
+    const video = document.getElementById('videoCongrats');
+    video.pause(); // Tạm dừng video
+    video.currentTime = 0; // Đặt lại thời gian phát về 0
+    messageCongrats.style.display = 'none'; // Ẩn hộp thông báo
+}
+
+        const messageBox = document.getElementById('messageBox');
+
+        // Hiện thông báo
+        function showMessage(message) {
+            alert(message);
+        }
+
+        // Hiển thị hộp quà và phát video với âm thanh
+        function showGift() {
+            messageBox.style.display = 'block';
+            const video = messageBox.querySelector('video');
+            video.play();  // Phát video
+            video.muted = false;  // Bỏ tắt tiếng để có âm thanh
+        }
+
+        // Đóng hộp quà
+        // Đóng hộp quà
+function closeMessage() {
+    const video = messageBox.querySelector('video');
+    video.pause(); // Tạm dừng video
+    video.currentTime = 0; // Đặt lại thời gian phát về 0
+    messageBox.style.display = 'none'; // Ẩn hộp thông báo
+}
+        // Tạo tuyết rơi
+        // Tạo tuyết rơi với giới hạn số lượng
+function createSnow() {
+    const maxSnowflakes = 100; // Số lượng tuyết tối đa
+    const snowflakes = []; // Mảng lưu trữ các hạt tuyết
+
+    function generateSnowflake() {
+        if (snowflakes.length >= maxSnowflakes) return; // Giới hạn số hạt tuyết
+
+        const snow = document.createElement('div');
+        const size = Math.floor(Math.random() * 4) + 1;
+        snow.classList.add('snow', `snow-${size}`);
+        snow.style.left = `${Math.random() * 100}vw`;
+        snow.style.animationDuration = `${Math.random() * 5 + 10}s`;
+
+        document.body.appendChild(snow);
+        snowflakes.push(snow);
+
+        // Xóa hạt tuyết khi hoạt ảnh kết thúc
+        snow.addEventListener('animationend', () => {
+            document.body.removeChild(snow);
+            snowflakes.splice(snowflakes.indexOf(snow), 1); // Loại bỏ khỏi mảng
+        });
+    }
+
+    // Tạo tuyết định kỳ
+    setInterval(generateSnowflake, 150); // Tăng khoảng thời gian để giảm tải
+}
+
+createSnow();
+    </script>
+
+</body>
+</html>
